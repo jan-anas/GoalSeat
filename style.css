@@ -1,0 +1,339 @@
+body{
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
+background-image:url("CLimage1.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+color:white;
+}
+
+.topbar{
+width:100%;
+background:white;
+padding:10px 0;
+margin:0;
+border-bottom:3px solid #00FF87;
+position:relative;
+z-index:1;
+}
+
+.nav-menu{
+text-align:center;
+}
+
+.nav-menu a{
+display:inline-block;
+margin:0 12px;
+padding:8px 18px;
+text-decoration:none;
+font-weight:bold;
+font-size:18px;
+color:#2D004D;
+}
+
+.nav-menu a:hover{
+background:#00FF87;
+color:#2D004D;
+}
+
+.nav-menu a.active{
+background:#00FF87;
+color:#2D004D;
+}
+
+.site-title{
+text-align:center;
+font-size:72px;
+font-weight:bold;
+color:white;
+margin-top:30px;
+margin-bottom:200px;
+letter-spacing:2px;
+text-shadow:2px 2px 4px #00FF87;
+}
+
+.internal-menu{
+text-align:center;
+margin-top:18px;
+margin-bottom:30px;
+}
+
+.internal-menu ol{
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.internal-menu li{
+display:inline-block;
+margin:0 10px;
+}
+
+.internal-menu a{
+font-size:18px;
+font-weight:bold;
+color:#00FF87;
+text-decoration:none;
+padding-bottom:3px;
+border-bottom:2px solid #00FF87;
+}
+
+.info-box{
+width:70%;
+margin:70px auto 20px auto;
+padding:15px;
+border:1px solid #00E676;
+border-radius:10px;
+background:rgba(45,0,77,.88);
+color:white;
+}
+
+.features{
+text-align:center;
+margin-top:80px;
+}
+
+.feature-box{
+display:inline-block;
+vertical-align:top;
+width:240px;
+padding:20px;
+margin:0 20px;
+
+background:rgba(45,0,77,.65);
+
+border:2px solid #00FF87;
+border-radius:18px;
+
+text-align:center;
+}
+
+.feature-box h3{
+color:#FF2D8A;
+margin-bottom:10px;
+}
+
+.feature-box p{
+color:white;
+}
+
+.action-row{
+text-align:center;
+margin:70px auto;
+}
+
+.action-card{
+display:inline-block;
+vertical-align:top;
+
+width:360px;
+height:260px;
+
+padding:30px;
+margin:0 25px;
+
+text-align:center;
+
+background:rgba(45,0,77,.65);
+
+border:2px solid #00FF87;
+border-radius:20px;
+}
+
+.action-card h3{
+color:#FF2D8A;
+margin-bottom:15px;
+}
+
+.action-card p{
+color:white;
+margin-bottom:20px;
+}
+
+.match-button{
+display:inline-block;
+background:#00FF87;
+color:#2D004D;
+font-weight:bold;
+text-decoration:none;
+padding:12px 28px;
+border-radius:10px;
+}
+
+.form{
+width:95%;
+margin:20px auto;
+background:rgba(45,0,77,.88);
+padding:20px;
+border-radius:12px;
+border:2px solid #00FF87;
+}
+
+legend{
+color:#FF2882;
+font-weight:bold;
+}
+
+input,
+select{
+width:250px;
+padding:8px;
+margin-top:5px;
+margin-bottom:12px;
+background:#24003D;
+color:white;
+border:1px solid #00FF87;
+}
+
+.button-row{
+margin-top:25px;
+text-align:left;
+}
+
+.button-row input{
+width:180px;
+padding:14px 0;
+font-size:24px;
+font-weight:bold;
+border:none;
+border-radius:10px;
+background:#00FF87;
+color:#2D004D;
+margin-right:18px;
+}
+
+.box{
+width:55%;
+margin:40px auto;
+background:rgba(45,0,77,.88);
+padding:30px 20px;
+border:2px solid #00FF87;
+text-align:center;
+color:white;
+}
+
+.box h2{
+color:#FF2882;
+font-size:52px;
+}
+
+.box h3{
+text-align:center;
+color:#00FF87;
+}
+
+.box p{
+font-size:22px;
+line-height:1.6;
+}
+
+.box ul{
+margin-left:40px;
+}
+
+.box li{
+font-size:22px;
+margin-bottom:10px;
+}
+
+.box input{
+width:420px;
+padding:14px;
+font-size:24px;
+background:#2D004D;
+color:white;
+border:1px solid #00FF87;
+}
+
+input[type="submit"]{
+background:#00FF87;
+color:#2D004D;
+font-size:22px;
+font-weight:bold;
+width:auto;
+padding:16px 38px;
+border:none;
+}
+
+.signup-link{
+text-align:center;
+margin-top:18px;
+font-size:16px;
+color:white;
+}
+
+.signup-link a{
+color:#C9A35A;
+font-weight:bold;
+font-size:16px;
+text-decoration:underline;
+}
+
+.signup-link a:hover{
+color:#e6c37a;
+}
+
+.matches-box{
+width:85%;
+margin:60px auto;
+padding:30px;
+background:rgba(45,0,77,.90);
+border:2px solid #00FF87;
+text-align:center;
+}
+
+.matches-box h1{
+color:#00FF87;
+font-size:45px;
+}
+
+.matches-box p{
+color:white;
+font-size:20px;
+}
+
+.matches-table{
+width:90%;
+margin:30px auto;
+border-collapse:collapse;
+background:#2D004D;
+color:white;
+}
+
+.matches-table th{
+background:#FF2882;
+color:white;
+padding:14px;
+border:2px solid #00FF87;
+}
+
+.matches-table td{
+padding:14px;
+border:2px solid #00FF87;
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:20px;
+font-weight:bold;
+color:#00FF87;
+background:#1f1f1f;
+}
+
+.topbar{
+position:relative;
+z-index:1;
+}
+
+.box ul{
+list-style-position:inside;
+padding-left:0;
+margin-left:0;
+
+display:inline-block;
+text-align:left;
+}

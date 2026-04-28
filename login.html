@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoalSeat - Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+<nav class="nav-menu">
+
+<a href="home.html">Home</a>
+
+<a href="matches.html">Matches</a>
+
+<a href="login.html" class="active">Login</a>
+
+<a href="signup.html">Signup</a>
+
+<a href="about.html">About Us</a>
+
+</nav>
+</header>
+
+<div class="box">
+
+<h2>Login</h2>
+
+<form onsubmit="return validateLogin()">
+
+<label>Email:</label><br>
+<input type="email" id="loginEmail" placeholder="example@gmail.com">
+
+<br><br>
+
+<label>Password:</label><br>
+<input type="password" id="loginPassword" placeholder="Enter your password">
+
+<br><br>
+
+<input type="submit" value="Login">
+
+<br><br>
+
+<p class="signup-link">
+Don't have an account?
+<a href="signup.html">Sign up here</a>
+</p>
+
+</form>
+
+</div>
+
+<footer>
+GoalSeat
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

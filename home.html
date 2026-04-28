@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoalSeat - Home</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+<nav class="nav-menu">
+
+<a href="home.html" class="active">Home</a>
+<a href="matches.html">Matches</a>
+<a href="login.html">Login</a>
+<a href="signup.html">Signup</a>
+<a href="about.html">About Us</a>
+
+</nav>
+</header>
+
+<div style="text-align:center; margin-top:50px;">
+<h1 class="site-title">GoalSeat</h1>
+</div>
+
+
+
+<div class="internal-menu">
+<ol>
+<li><a href="#ticketCategories">Go to Ticket Categories</a></li>
+<li><a href="matches.html">Go to Match Table</a></li>
+<li><a href="#bookTicket">Go to Book Ticket</a></li>
+</ol>
+</div>
+
+<div style="text-align:center; margin-top:33px;">
+<img src="AboutUs.jpg"
+usemap="#aboutmap"
+width="180"
+alt="About Us"
+style="display:block; margin:30px auto 0;">
+</div>
+
+<map name="aboutmap">
+<area shape="rect"
+coords="0,0,180,100"
+href="about.html"
+alt="About Us">
+</map>
+
+
+<div class="info-box">
+<p id="welcomeMessage">
+This website is a simple football ticket booking website that helps users check match details and request tickets easily.
+The user can view match names, dates, stadiums, and prices.
+The goal of this website is to make it easier for football fans to organize their ticket booking.
+</p>
+</div>
+
+
+<div class="features">
+
+<div class="feature-box">
+<h3>Live Fixtures</h3>
+<p>Browse upcoming football matches.</p>
+</div>
+
+<div class="feature-box">
+<h3>Premium Seats</h3>
+<p>Choose VIP and standard sections.</p>
+</div>
+
+<div class="feature-box">
+<h3>Fast Booking</h3>
+<p>Reserve tickets in seconds.</p>
+</div>
+
+</div>
+
+
+<div class="action-row" id="ticketCategories">
+
+<div class="action-card">
+<h3>Browse Matches</h3>
+
+<p>
+Click below to view available football matches and ticket prices.
+</p>
+
+<a href="matches.html" class="match-button">
+View Matches
+</a>
+</div>
+
+
+<div class="action-card">
+
+<h3>About Us</h3>
+
+<p>
+Learn more about GoalSeat and the project.
+</p>
+
+<a href="about.html" class="match-button">
+Go to About Us
+</a>
+
+</div>
+
+</div>
+
+
+<article id="bookTicket">
+<section>
+
+<form class="form" onsubmit="return bookTicket()">
+
+<fieldset>
+
+<legend>Book Your Ticket</legend>
+
+<label>
+Full Name:
+<input type="text" id="customerName" placeholder="Ahmed Ali">
+</label>
+
+<br><br>
+
+<label>
+Email:
+<input type="email" id="customerEmail" placeholder="example@gmail.com">
+</label>
+
+<br><br>
+
+<label>
+Select Match:
+<select id="match" onchange="calculatePrice()">
+<option value="">Choose Match</option>
+<option value="150">Arsenal vs Manchester City</option>
+<option value="120">Liverpool vs Chelsea</option>
+<option value="150">Manchester United vs Tottenham</option>
+<option value="120">Newcastle United vs Aston Villa</option>
+<option value="120">Arsenal vs Liverpool</option>
+<option value="150">Chelsea vs Tottenham</option>
+<option value="120">Manchester City vs Newcastle</option>
+</select>
+</label>
+
+<br><br>
+
+<label>
+Ticket Type:
+<select id="ticketType" onchange="calculatePrice()">
+<option value="">Choose Type</option>
+<option value="2">VIP</option>
+<option value="1.5">Standard</option>
+<option value="1">Economy</option>
+</select>
+</label>
+
+<br><br>
+
+<label>
+Number of Tickets:
+<input type="number" id="ticketCount" placeholder="2" min="1" oninput="calculatePrice()">
+</label>
+
+<br><br>
+
+<p id="priceResult">
+Ticket price will appear here.
+</p>
+
+<div class="button-row">
+<input type="submit" value="Book Ticket">
+<input type="reset" value="Clear Form" onclick="resetMessage()">
+</div>
+</fieldset>
+
+</form>
+
+</section>
+</article>
+
+
+<article>
+
+<form class="form">
+
+<fieldset>
+
+<legend>How was your booking experience?</legend>
+
+<label>
+<input type="radio" name="experience">
+Excellent
+</label>
+<br>
+
+<label>
+<input type="radio" name="experience">
+Good
+</label>
+<br>
+
+<label>
+<input type="radio" name="experience">
+Average
+</label>
+
+</fieldset>
+
+<br>
+
+<fieldset>
+
+<legend>What leagues do you follow?</legend>
+
+<label>
+<input type="checkbox">
+Saudi League
+</label>
+<br>
+
+<label>
+<input type="checkbox">
+Premier League
+</label>
+<br>
+
+<label>
+<input type="checkbox">
+La Liga
+</label>
+<br>
+
+<label>
+<input type="checkbox">
+Serie A
+</label>
+
+</fieldset>
+
+</form>
+
+</article>
+
+
+<footer>
+GoalSeat
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

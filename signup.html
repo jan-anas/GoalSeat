@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoalSeat - Signup</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .signup-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .signup-box {
+            width: 420px;
+            background: #2b2b2b;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #888;
+            box-shadow: 0px 0px 8px rgba(0,0,0,0.4);
+            color: lightblue;
+            text-align: center;
+        }
+
+        .signup-box h2 {
+            color: lightblue;
+            margin-bottom: 25px;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .signup-form label {
+            color: lightblue;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .signup-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            background-color: #1f1f1f;
+            color: white;
+            border: 1px solid #555;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .signup-form .submit-btn {
+            width: 160px;
+            margin: 10px auto 0;
+            cursor: pointer;
+        }
+
+        .login-text {
+            margin-top: 25px;
+            color: lightblue;
+            text-align: center;
+        }
+
+        .login-text a {
+            color: lightblue;
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+<nav class="nav-menu">
+
+<a href="home.html">Home</a>
+
+<a href="matches.html">Matches</a>
+
+<a href="login.html">Login</a>
+
+<a href="signup.html" class="active">Signup</a>
+
+<a href="about.html">About Us</a>
+
+</nav>
+</header>
+
+<div class="box">
+
+<h2>Create Account</h2>
+
+<form onsubmit="return validateSignup()">
+
+<p>Full Name:</p>
+<input type="text" id="signupName" placeholder="Your full name">
+
+<p>Email:</p>
+<input type="email" id="signupEmail" placeholder="example@gmail.com">
+
+<p>Phone Number:</p>
+<input type="tel" id="signupPhone" placeholder="05xxxxxxxx">
+
+<p>Password:</p>
+<input type="password" id="signupPassword" placeholder="Enter password">
+
+<p>Confirm Password:</p>
+<input type="password" id="confirmPassword" placeholder="Re-enter password">
+
+<br><br>
+
+<input type="submit" value="Create Account">
+
+</form>
+
+</div>
+
+<footer>
+GoalSeat
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
