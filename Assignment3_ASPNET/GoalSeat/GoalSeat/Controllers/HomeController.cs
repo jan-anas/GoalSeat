@@ -8,23 +8,52 @@ namespace GoalSeat.Controllers
     {
         public IActionResult Index()
         {
-            string visitorName = HttpContext.Session.GetString("UserName") ?? "Guest";
-            string browserInfo = Request.Headers.UserAgent.ToString();
+            bool cookiesAccepted = Request.Cookies["GoalSeatConsent"] == "Accepted";
 
-            CookieOptions options = new CookieOptions
+            if (cookiesAccepted)
             {
-                Expires = DateTimeOffset.Now.AddDays(15),
-                HttpOnly = true,
-                Secure = true,
-                SameSite = SameSiteMode.Strict
-            };
+                string visitorName = HttpContext.Session.GetString("UserName") ?? "Guest";
+                string browserInfo = Request.Headers.UserAgent.ToString();
 
-            Response.Cookies.Append("GoalSeatVisitor", visitorName, options);
-            Response.Cookies.Append("GoalSeatBrowser", browserInfo, options);
+                Response.Cookies.Append("GoalSeatVisitor", visitorName, new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddDays(15),
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict
+                });
 
-            ViewBag.CookieUser = Request.Cookies["GoalSeatVisitor"] ?? visitorName;
+                Response.Cookies.Append("GoalSeatBrowser", browserInfo, new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddDays(15),
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict
+                });
+            }
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AcceptCookies(string? returnUrl)
+        {
+            Response.Cookies.Append("GoalSeatConsent", "Accepted", new CookieOptions
+            {
+                Expires = DateTimeOffset.Now.AddDays(30),
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.Lax,
+                IsEssential = true
+            });
+
+            if (!string.IsNullOrWhiteSpace(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return LocalRedirect(returnUrl);
+            }
+
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult About()
         {
