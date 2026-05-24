@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="box">
+
+    <h2>Login</h2>
+    @if (TempData["Message"] != null)
+    {
+        <p style="color:#00FF87;">@TempData["Message"]</p>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:#FF2882;">@ViewBag.Error</p>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <p style="color:#00FF87;">@ViewBag.Message</p>
+    }
+
+    <form asp-controller="Account" asp-action="Login" method="post">
+
+        <label>Email:</label><br />
+        <input type="email" name="email" placeholder="example@gmail.com" />
+
+        <br /><br />
+
+        <label>Password:</label><br />
+        <input type="password" name="password" placeholder="Enter your password" />
+
+        <br /><br />
+
+        <input type="submit" value="Login" />
+
+        <br /><br />
+
+        <p class="signup-link">
+            Don't have an account?
+            <a asp-controller="Account" asp-action="Signup">Sign up here</a>
+        </p>
+
+    </form>
+
+</div>

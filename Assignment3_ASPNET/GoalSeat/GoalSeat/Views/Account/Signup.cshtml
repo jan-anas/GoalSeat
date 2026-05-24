@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Signup";
+}
+
+<div class="box">
+
+    <h2>Create Account</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:#FF2882;">@ViewBag.Error</p>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <p style="color:#00FF87;">@ViewBag.Message</p>
+    }
+
+    <form asp-controller="Account" asp-action="Signup" method="post">
+
+        <p>Full Name:</p>
+        <input type="text" name="fullName" placeholder="Your full name" />
+
+        <p>Email:</p>
+        <input type="email" name="email" placeholder="example@gmail.com" />
+
+        <p>Phone Number:</p>
+        <input type="tel" name="phoneNumber" placeholder="05xxxxxxxx" />
+
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Enter password" />
+
+        <p>Confirm Password:</p>
+        <input type="password" name="confirmPassword" placeholder="Re-enter password" />
+
+        <br /><br />
+
+        <input type="submit" value="Create Account" />
+
+        <p class="signup-link">
+            Already have an account?
+            <a asp-controller="Account" asp-action="Login">Login here</a>
+        </p>
+
+    </form>
+
+</div>

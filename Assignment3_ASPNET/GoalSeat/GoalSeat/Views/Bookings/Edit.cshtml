@@ -1,0 +1,69 @@
+﻿@model GoalSeat.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<div class="box">
+
+    <h2>Edit Booking</h2>
+
+    @if (ViewBag.Error != null)
+    {
+        <p style="color:#FF2882; font-weight:bold;">
+            @ViewBag.Error
+        </p>
+    }
+
+    <form asp-controller="Bookings" asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <p>
+            Customer Name:
+            <strong>@Model.CustomerName</strong>
+        </p>
+
+        <p>
+            Customer Email:
+            <strong>@Model.CustomerEmail</strong>
+        </p>
+
+        <p>Select Match:</p>
+        <select asp-for="MatchName" name="matchName">
+            <option value="">Choose Match</option>
+            <option value="Arsenal vs Manchester City">Arsenal vs Manchester City</option>
+            <option value="Liverpool vs Chelsea">Liverpool vs Chelsea</option>
+            <option value="Manchester United vs Tottenham">Manchester United vs Tottenham</option>
+            <option value="Newcastle United vs Aston Villa">Newcastle United vs Aston Villa</option>
+            <option value="Arsenal vs Liverpool">Arsenal vs Liverpool</option>
+            <option value="Chelsea vs Tottenham">Chelsea vs Tottenham</option>
+            <option value="Manchester City vs Newcastle">Manchester City vs Newcastle</option>
+        </select>
+
+        <p>Ticket Type:</p>
+        <select asp-for="TicketType" name="ticketType">
+            <option value="">Choose Type</option>
+            <option value="VIP">VIP</option>
+            <option value="Standard">Standard</option>
+            <option value="Economy">Economy</option>
+        </select>
+
+        <p>Number of Tickets:</p>
+        <input asp-for="TicketCount" name="ticketCount" min="1" max="10" />
+
+        <br /><br />
+
+        <input type="submit" value="Update Booking" />
+
+        <br /><br />
+
+        <a asp-controller="Bookings"
+           asp-action="Index"
+           class="match-button">
+            Back to Bookings
+        </a>
+
+    </form>
+
+</div>
