@@ -1,0 +1,205 @@
+﻿@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "Home";
+    string? bookingUserName = Context.Session.GetString("UserName");
+    string? bookingUserEmail = Context.Session.GetString("UserEmail");
+}
+
+<div style="text-align:center; margin-top:50px;">
+    <h1 class="site-title">GoalSeat</h1>
+</div>
+
+
+
+<div class="internal-menu">
+    <ol>
+        <li>
+            <a asp-controller="Matches" asp-action="Index">
+                View Available Matches
+            </a>
+        </li>
+        <li>
+            <a href="#bookTicket">
+                Book a Ticket
+            </a>
+        </li>
+    </ol>
+</div>
+
+<div style="text-align:center; margin-top:33px;">
+    <a asp-controller="Home" asp-action="About">
+        <img src="~/images/AboutUs.jpg"
+             width="180"
+             alt="About Us"
+             style="display:block; margin:30px auto 0;" />
+    </a>
+</div>
+
+<div class="info-box">
+    <p id="welcomeMessage">
+        This website is a simple football ticket booking website that helps users
+        check match details and request tickets easily. The user can view match names,
+        dates, stadiums, and prices. The goal of this website is to make it easier
+        for football fans to organize their ticket booking.
+    </p>
+</div>
+
+<div class="features">
+
+    <div class="feature-box">
+        <h3>Live Fixtures</h3>
+        <p>Browse upcoming football matches.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Premium Seats</h3>
+        <p>Choose VIP and standard sections.</p>
+    </div>
+
+    <div class="feature-box">
+        <h3>Fast Booking</h3>
+        <p>Reserve tickets in seconds.</p>
+    </div>
+
+</div>
+
+<div class="action-row">
+
+    <div class="action-card">
+        <h3>Browse Matches</h3>
+
+        <p>
+            Click below to view available football matches and ticket prices.
+        </p>
+
+        <a href="#bookTicket" class="match-button">
+            Book Now
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3>About Us</h3>
+
+        <p>
+            Learn more about GoalSeat and the project.
+        </p>
+
+        <a asp-controller="Home" asp-action="About" class="match-button">
+            Go to About Us
+        </a>
+    </div>
+
+</div>
+
+<article id="bookTicket">
+    <section>
+
+        <form asp-controller="Bookings" asp-action="Create" method="post" class="form">
+
+            <fieldset>
+
+                <legend>Book Your Ticket</legend>
+
+                @if (TempData["BookingError"] != null)
+                {
+                    <p style="color:#FF2882; font-weight:bold;">
+                        @TempData["BookingError"]
+                    </p>
+                }
+
+                @if (TempData["BookingMessage"] != null)
+                {
+                    <p style="color:#00FF87; font-weight:bold;">
+                        @TempData["BookingMessage"]
+                    </p>
+                }
+
+                @if (string.IsNullOrEmpty(bookingUserName))
+                {
+                    <p style="color:#FF2882; font-weight:bold;">
+                        Please login before booking a ticket.
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        Booking Account:
+                        <strong>@bookingUserName</strong>
+                    </p>
+
+                    <p>
+                        Email:
+                        <strong>@bookingUserEmail</strong>
+                    </p>
+                }
+
+                <label>
+                    Select Match:
+                    <select id="matchName" name="matchName" onchange="calculatePrice()">
+                        <option value="">Choose Match</option>
+                        <option value="Arsenal vs Manchester City" data-price="250">Arsenal vs Manchester City</option>
+                        <option value="Liverpool vs Chelsea" data-price="220">Liverpool vs Chelsea</option>
+                        <option value="Manchester United vs Tottenham" data-price="200">Manchester United vs Tottenham</option>
+                        <option value="Newcastle United vs Aston Villa" data-price="170">Newcastle United vs Aston Villa</option>
+                        <option value="Arsenal vs Liverpool" data-price="230">Arsenal vs Liverpool</option>
+                        <option value="Chelsea vs Tottenham" data-price="210">Chelsea vs Tottenham</option>
+                        <option value="Manchester City vs Newcastle" data-price="240">Manchester City vs Newcastle</option>
+                    </select>
+                </label>
+
+                <br />
+                <br />
+
+                <label>
+                    Ticket Type:
+                    <select id="ticketType" name="ticketType" onchange="calculatePrice()">
+                        <option value="">Choose Type</option>
+                        <option value="VIP" data-multiplier="2">VIP</option>
+                        <option value="Standard" data-multiplier="1.5">Standard</option>
+                        <option value="Economy" data-multiplier="1">Economy</option>
+                    </select>
+                </label>
+
+                <br />
+                <br />
+
+                <label>
+                    Number of Tickets:
+                    <input type="number"
+                           id="ticketCount"
+                           name="ticketCount"
+                           placeholder="2"
+                           min="1"
+                           oninput="calculatePrice()" />
+                </label>
+
+                <br />
+                <br />
+
+                <p id="priceResult">
+                    Ticket price will appear here.
+                </p>
+
+                <div class="button-row">
+                    @if (string.IsNullOrEmpty(bookingUserName))
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Login"
+                           class="match-button">
+                            Login to Book
+                        </a>
+                    }
+                    else
+                    {
+                        <input type="submit" value="Book Ticket" />
+                        <input type="reset" value="Clear Form" onclick="resetMessage()" />
+                    }
+                </div>
+
+            </fieldset>
+
+        </form>
+
+    </section>
+</article>

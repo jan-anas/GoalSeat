@@ -1,0 +1,103 @@
+﻿@model IEnumerable<GoalSeat.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<div class="matches-box">
+
+    <h1>Ticket Bookings</h1>
+
+    <p>
+        Here you can view the saved ticket bookings in GoalSeat.
+    </p>
+
+    @if (TempData["BookingMessage"] != null)
+    {
+        <p style="color:#00FF87; font-weight:bold;">
+            @TempData["BookingMessage"]
+        </p>
+    }
+
+    <form asp-controller="Bookings" asp-action="Index" method="get" class="booking-search-form">
+        <input type="text"
+               name="searchTerm"
+               value="@ViewBag.SearchTerm"
+               placeholder="Search by customer, email, or match" />
+
+        <input type="submit" value="Search" />
+
+        <a asp-controller="Bookings"
+           asp-action="Index"
+           class="match-button">
+            Clear
+        </a>
+    </form>
+
+    @if (!Model.Any())
+    {
+        if (!string.IsNullOrWhiteSpace(ViewBag.SearchTerm as string))
+        {
+            <p>No bookings matched your search.</p>
+        }
+        else
+        {
+            <p>No bookings have been created yet.</p>
+        }
+    }
+    else
+    {
+        <table class="matches-table">
+
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Match</th>
+                <th>Ticket Type</th>
+                <th>Tickets</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var booking in Model)
+            {
+                <tr>
+                    <td>@booking.Id</td>
+                    <td>@booking.CustomerName</td>
+                    <td>@booking.CustomerEmail</td>
+                    <td>@booking.MatchName</td>
+                    <td>@booking.TicketType</td>
+                    <td>@booking.TicketCount</td>
+                    <td>@booking.TotalPrice.ToString("0.00") SAR</td>
+                    <td class="actions-cell">
+                        <div class="actions-buttons">
+                            <a asp-controller="Bookings"
+                               asp-action="Edit"
+                               asp-route-id="@booking.Id"
+                               class="match-button">
+                                Edit
+                            </a>
+
+                            <a asp-controller="Bookings"
+                               asp-action="Delete"
+                               asp-route-id="@booking.Id"
+                               class="match-button">
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       asp-fragment="bookTicket"
+       class="match-button">
+        Create New Booking
+    </a>
+
+</div>
